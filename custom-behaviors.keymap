@@ -1,0 +1,16 @@
+behaviors {
+  #define HOLDING_TIME 300
+  #define STREAK_DECAY 125
+  #define REPEAT_DECAY 200
+
+  ht: holdTap {
+    compatible = "zmk,behavior-hold-tap";
+    flavor = "tap-preferred";
+    hold-trigger-on-release; // wait for other home row mods
+    tapping-term-ms = <HOLDING_TIME>;
+    quick-tap-ms = <REPEAT_DECAY>;
+    require-prior-idle-ms = <STREAK_DECAY>;
+    #binding-cells = <2>;
+    bindings = <&kp>, <&kp>;
+  };
+};
